@@ -21,7 +21,7 @@ const moduleConfig = {
       exclude: [/node_modules/],
       use: [
         {
-          loader: MiniCssExtract.loader,
+          loader: process.env.NODE_ENV !== "production" ? "style-loader" : MiniCssExtract.loader,
           options: {
             esModule: true,
           },
@@ -30,7 +30,7 @@ const moduleConfig = {
           loader: "css-loader",
           options: {
             modules: {
-              mode: 'local',
+              // mode: 'local',
               localIdentName: '[name]__[local]--[hash:base64:5]'
             }
           }
@@ -55,14 +55,10 @@ const moduleConfig = {
   ]
 }
 
-const pluginsConfig = [
+const pluginsConfig:Array<any> = [
   new HtmlWebpackPlugin({
     title: 'L7',
     template: path.resolve(__dirname, '../index.html'),
-  }),
-  new MiniCssExtract({
-    runtime: false,
-    filename: "css/l7_[contenthash:6].css",
   }),
   new MonacoEditor({
     languages:['typescript', 'javascript']
@@ -70,6 +66,13 @@ const pluginsConfig = [
   // 打包体积分析
   // new BundleAnalyzerPlugin()
 ]
+
+if(process.env.NODE_ENV === "production"){
+  pluginsConfig.push(new MiniCssExtract({
+    runtime: false,
+    filename: "css/l7_[contenthash:6].css",
+  }))
+}
 
 const common: 
 webpack.Configuration | 

@@ -3,7 +3,7 @@
 */
 
 import React from 'react'
-import CollapseAutomatic from '../../components/CollapseAutomatic'
+import CollapseAutomatic from '../CollapseAutomatic'
 
 const ReactFunctionTest = () => {
   return <CollapseAutomatic displayObj={[]} />

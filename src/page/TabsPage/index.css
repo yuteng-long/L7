@@ -1,0 +1,7 @@
+.tabsstyles{
+  height: 100%
+}
+
+.tabsstyles :global(.ant-tabs-content) {
+  height: 100%
+}

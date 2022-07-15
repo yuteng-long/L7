@@ -13,7 +13,7 @@ const prodConfig = merge(common, {
     path: path.resolve(__dirname, '../dist'),
     
     // 编译前清除目录
-    clean: true,
+    // clean: true,
   },
   optimization: {
     runtimeChunk: true,
